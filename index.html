@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ink Pool — type that bleeds into paper</title>
+<meta name="description" content="Letters that wick into paper fibre as you pass. A fluid bleed clipped to the text itself, always legible.">
+<meta name="theme-color" content="#0b0a08">
+<link rel="canonical" href="https://vishnuvsdevtech.github.io/ink-pool/">
+<link rel="stylesheet" href="assets/base.css">
+<style>
+:root{--acc:#b5743a}
+body{background:#0b0a08;background-image:radial-gradient(90% 70% at 50% 0%,#171310 0%,#0b0a08 65%)}
+.paper{position:relative;border-radius:6px;overflow:hidden;background:#efe6d6;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+.paper canvas{display:block;width:100%;height:auto}
+.caption{position:absolute;left:22px;bottom:16px;font:10px var(--mono);letter-spacing:.14em;
+ text-transform:uppercase;color:rgba(40,30,20,.45)}
+</style></head>
+<body><div class="wrap">
+<header><h1>Type that <em>bleeds</em></h1><span class="tag">wicking · fibre · always legible</span></header>
+<div class="paper"><canvas id="c" width="1000" height="420"></canvas>
+  <div class="caption">move across the line</div></div>
+<div class="meter"><span>wetness <b id="m-w">0</b></span><span>fibre <b id="m-f">grain</b></span></div>
+<div class="notes"><p>Real ink does not stop at the edge of a letter: it wicks outward along paper fibre, unevenly, faster where the fibre is loose. The effect here is the text's own alpha channel, dilated and pushed through a noise field, drawn underneath the crisp letters so the word stays sharp while its edges bloom.</p>
+<p>It costs one offscreen alpha sample and one blurred draw per frame — no fluid solver, no shader. The trick is that the bloom is clipped to a dilated copy of the glyphs, so it can never wander into the margin and read as a smudge.</p></div>
+<footer><span>Ink Pool · POC</span><span>alpha dilation + noise</span></footer>
+</div>
+<script src="assets/app.js"></script></body></html>
